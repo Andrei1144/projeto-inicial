@@ -15,15 +15,26 @@ var estado = document.getElementById("estado");
 
 
 function alertar(){
+
+    //buscar o endereço pelo cep
+    const url = `https://viacep.com.br/ws/${cep.value}/json`;
+
+    fetch(url)
+    .then(resposta=>resposta.json()
+    .then(data => {
+        logadouro.value =data.logadouro
+    }))
+    .catch(error=>alert(error))
+
     //alert(nome.value + " Clicou no botao!!!");
     saida.innerText = "Nome: " + " " + nome.value+ 
-                      "\n E-mail: "+ " " + email.value+
-                      "\n Telefone: "+ " " + telefone.value+
-                      "\n CEP: "+ " " + cep.value+
-                      "\n Logadouro: "+ " " + logadouro.value+
-                      "\n Numero: "+ " " + numero.value+
-                      "\n Complemento: "+ " " + complemento.value+
-                      "\n bairro: "+ " " + bairro.value+
-                      "\n cidade: "+ " " + cidade.value+
-                      "\n estado: "+ " " + estado.value;
+        "\n E-mail: "+ " " + email.value+
+        "\n Telefone: "+ " " + telefone.value+
+        "\n CEP: "+ " " + cep.value+
+        "\n Logadouro: "+ " " + logadouro.value+
+        "\n Numero: "+ " " + numero.value+
+        "\n Complemento: "+ " " + complemento.value+
+        "\n bairro: "+ " " + bairro.value+
+        "\n cidade: "+ " " + cidade.value+
+        "\n estado: "+ " " + estado.value;
 }
